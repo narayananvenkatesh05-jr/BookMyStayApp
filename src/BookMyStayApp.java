@@ -1,36 +1,27 @@
-import java.util.Scanner;
-
 public class BookMyStayApp {
 
-    public static void validateBooking() {
+    static int availableRooms = 5;
 
-        Scanner sc = new Scanner(System.in);
+    public static void cancelBooking(int roomsBooked)
+    {
+        availableRooms += roomsBooked;
 
-        try
-        {
-            System.out.print("Enter number of rooms: ");
-            int rooms = sc.nextInt();
-
-            if(rooms <= 0)
-            {
-                throw new IllegalArgumentException("Rooms must be greater than 0");
-            }
-
-            System.out.println("Booking Successful");
-
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error: " + e.getMessage());
-        }
-
-        sc.close();
+        System.out.println("Booking Cancelled");
+        System.out.println("Inventory Restored");
+        System.out.println("Available Rooms: " + availableRooms);
     }
 
     public static void main(String[] args) {
 
         System.out.println("WELCOME TO BOOK MY STAY");
-        validateBooking();
+
+        int bookedRooms = 2;
+        availableRooms -= bookedRooms;
+
+        System.out.println("Rooms Booked: " + bookedRooms);
+        System.out.println("Available Rooms: " + availableRooms);
+
+        cancelBooking(bookedRooms);
 
     }
 }
