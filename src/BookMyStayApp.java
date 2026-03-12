@@ -1,27 +1,39 @@
-public class BookMyStayApp {
+class BookingThread extends Thread {
 
-    static int availableRooms = 5;
+    static int rooms = 3;
 
-    public static void cancelBooking(int roomsBooked)
+    public void run()
     {
-        availableRooms += roomsBooked;
-
-        System.out.println("Booking Cancelled");
-        System.out.println("Inventory Restored");
-        System.out.println("Available Rooms: " + availableRooms);
+        synchronized(BookingThread.class)
+        {
+            if(rooms > 0)
+            {
+                System.out.println(Thread.currentThread().getName() + " booked a room");
+                rooms--;
+            }
+            else
+            {
+                System.out.println(Thread.currentThread().getName() + " No rooms available");
+            }
+        }
     }
+}
+
+public class BookMyStayApp {
 
     public static void main(String[] args) {
 
         System.out.println("WELCOME TO BOOK MY STAY");
 
-        int bookedRooms = 2;
-        availableRooms -= bookedRooms;
+        BookingThread t1 = new BookingThread();
+        BookingThread t2 = new BookingThread();
+        BookingThread t3 = new BookingThread();
+        BookingThread t4 = new BookingThread();
 
-        System.out.println("Rooms Booked: " + bookedRooms);
-        System.out.println("Available Rooms: " + availableRooms);
-
-        cancelBooking(bookedRooms);
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
 
     }
 }
