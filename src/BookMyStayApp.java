@@ -1,20 +1,24 @@
 public class BookMyStayApp {
 
+    static int standardRooms = 10;
+    static int deluxeRooms = 5;
+    static int suiteRooms = 2;
+
     public static void main(String[] args) {
 
         System.out.println("WELCOME TO BOOK MY STAY");
 
-        showRoomTypes();
+        showInventory();
 
     }
 
-    public static void showRoomTypes() {
+    public static void showInventory() {
 
-        System.out.println("Available Room Types:");
+        System.out.println("Room Inventory:");
 
-        System.out.println("1. Standard Room - 10 rooms");
-        System.out.println("2. Deluxe Room - 5 rooms");
-        System.out.println("3. Suite Room - 2 rooms");
+        System.out.println("Standard Rooms: " + standardRooms);
+        System.out.println("Deluxe Rooms: " + deluxeRooms);
+        System.out.println("Suite Rooms: " + suiteRooms);
 
     }
 
