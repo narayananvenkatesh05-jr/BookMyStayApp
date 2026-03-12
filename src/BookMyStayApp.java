@@ -6,20 +6,35 @@ public class BookMyStayApp {
 
     public static void main(String[] args) {
 
-        System.out.println("WELCOME TO BOOK MY STAY");
-
-        showInventory();
-
-    }
-
-    public static void showInventory() {
-
-        System.out.println("Room Inventory:");
-
-        System.out.println("Standard Rooms: " + standardRooms);
-        System.out.println("Deluxe Rooms: " + deluxeRooms);
-        System.out.println("Suite Rooms: " + suiteRooms);
+        checkAvailability("Standard");
+        checkAvailability("Deluxe");
+        checkAvailability("Suite");
+        checkAvailability("Premium");
 
     }
 
+    public static void checkAvailability(String roomType) {
+
+        if (roomType.equalsIgnoreCase("Standard")) {
+
+            System.out.println("Standard Rooms Available: " + standardRooms);
+
+        }
+        else if (roomType.equalsIgnoreCase("Deluxe")) {
+
+            System.out.println("Deluxe Rooms Available: " + deluxeRooms);
+
+        }
+        else if (roomType.equalsIgnoreCase("Suite")) {
+
+            System.out.println("Suite Rooms Available: " + suiteRooms);
+
+        }
+        else {
+
+            System.out.println("Invalid Room Type");
+
+        }
+
+    }
 }
