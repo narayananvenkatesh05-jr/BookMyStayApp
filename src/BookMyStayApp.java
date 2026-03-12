@@ -1,44 +1,27 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class BookMyStayApp {
 
-    public static void addOnServices() {
+    public static void bookingHistory() {
 
-        Scanner sc = new Scanner(System.in);
+        ArrayList<String> history = new ArrayList<>();
 
-        System.out.println("Available Add-On Services:");
-        System.out.println("1. Breakfast");
-        System.out.println("2. Airport Pickup");
-        System.out.println("3. Spa Access");
+        history.add("Booking ID:101 Room:201");
+        history.add("Booking ID:102 Room:305");
+        history.add("Booking ID:103 Room:402");
 
-        System.out.print("Select Service: ");
-        int choice = sc.nextInt();
+        System.out.println("Booking History Report");
 
-        switch(choice)
+        for(String record : history)
         {
-            case 1:
-                System.out.println("Breakfast Added.");
-                break;
-
-            case 2:
-                System.out.println("Airport Pickup Added.");
-                break;
-
-            case 3:
-                System.out.println("Spa Access Added.");
-                break;
-
-            default:
-                System.out.println("Invalid Service");
+            System.out.println(record);
         }
-
-        sc.close();
     }
 
     public static void main(String[] args) {
 
         System.out.println("WELCOME TO BOOK MY STAY");
-        addOnServices();
+        bookingHistory();
 
     }
 }
