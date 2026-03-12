@@ -1,39 +1,36 @@
-class BookingThread extends Thread {
-
-    static int rooms = 3;
-
-    public void run()
-    {
-        synchronized(BookingThread.class)
-        {
-            if(rooms > 0)
-            {
-                System.out.println(Thread.currentThread().getName() + " booked a room");
-                rooms--;
-            }
-            else
-            {
-                System.out.println(Thread.currentThread().getName() + " No rooms available");
-            }
-        }
-    }
-}
+import java.io.*;
 
 public class BookMyStayApp {
 
     public static void main(String[] args) {
 
-        System.out.println("WELCOME TO BOOK MY STAY");
+        try
+        {
+            FileWriter writer = new FileWriter("booking.txt");
 
-        BookingThread t1 = new BookingThread();
-        BookingThread t2 = new BookingThread();
-        BookingThread t3 = new BookingThread();
-        BookingThread t4 = new BookingThread();
+            writer.write("BookingID:101 Room:201\n");
+            writer.write("BookingID:102 Room:305\n");
 
-        t1.start();
-        t2.start();
-        t3.start();
-        t4.start();
+            writer.close();
 
+            System.out.println("Booking Data Saved");
+
+            BufferedReader reader = new BufferedReader(new FileReader("booking.txt"));
+
+            String line;
+
+            System.out.println("Recovered Booking Data:");
+
+            while((line = reader.readLine()) != null)
+            {
+                System.out.println(line);
+            }
+
+            reader.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
