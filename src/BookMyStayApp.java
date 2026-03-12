@@ -1,44 +1,44 @@
+import java.util.Scanner;
+
 public class BookMyStayApp {
 
-    static int standardRooms = 10;
-    static int deluxeRooms = 5;
-    static int suiteRooms = 2;
+    public static void addOnServices() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Available Add-On Services:");
+        System.out.println("1. Breakfast");
+        System.out.println("2. Airport Pickup");
+        System.out.println("3. Spa Access");
+
+        System.out.print("Select Service: ");
+        int choice = sc.nextInt();
+
+        switch(choice)
+        {
+            case 1:
+                System.out.println("Breakfast Added.");
+                break;
+
+            case 2:
+                System.out.println("Airport Pickup Added.");
+                break;
+
+            case 3:
+                System.out.println("Spa Access Added.");
+                break;
+
+            default:
+                System.out.println("Invalid Service");
+        }
+
+        sc.close();
+    }
 
     public static void main(String[] args) {
 
-        confirmBooking("Standard");
-        confirmBooking("Deluxe");
-        confirmBooking("Suite");
-        confirmBooking("Suite");
+        System.out.println("WELCOME TO BOOK MY STAY");
+        addOnServices();
 
     }
-
-    public static void confirmBooking(String roomType) {
-
-        if (roomType.equalsIgnoreCase("Standard") && standardRooms > 0) {
-
-            standardRooms--;
-            System.out.println("Standard Room Booked");
-
-        }
-        else if (roomType.equalsIgnoreCase("Deluxe") && deluxeRooms > 0) {
-
-            deluxeRooms--;
-            System.out.println("Deluxe Room Booked");
-
-        }
-        else if (roomType.equalsIgnoreCase("Suite") && suiteRooms > 0) {
-
-            suiteRooms--;
-            System.out.println("Suite Room Booked");
-
-        }
-        else {
-
-            System.out.println("Room Not Available");
-
-        }
-
-    }
-
 }
